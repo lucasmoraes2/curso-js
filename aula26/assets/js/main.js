@@ -7,12 +7,12 @@ form.addEventListener('submit', function (event) {
     const peso = Number(inputPeso.value);
     const altura = Number(inputAltura.value);
 
-    if(!peso) {
+    if (!peso) {
         setResultado('Peso inválido', false);
         return;
     }
 
-    if(!altura) {
+    if (!altura) {
         setResultado('Altura inválida', false);
         return;
     }
@@ -26,17 +26,17 @@ form.addEventListener('submit', function (event) {
 function getClassificacaoImc(imc) {
     const classificacao = ['Abaixo do peso', 'Peso normal', 'Sobrepeso', 'Obesidade grau 1', 'Obesidade grau 2', 'Obesidade grau 3'];
 
-    if(imc > 39.9) return classificacao[5];
+    if (imc > 39.9) return classificacao[5];
     
-    if(imc > 34.9) return classificacao[4];
+    if (imc > 34.9) return classificacao[4];
     
-    if(imc > 29.9) return classificacao[3];
+    if (imc > 29.9) return classificacao[3];
     
-    if(imc > 24.9) return classificacao[2];
+    if (imc > 24.9) return classificacao[2];
     
-    if(imc > 18.5) return classificacao[1];
+    if (imc > 18.5) return classificacao[1];
     
-    if(imc < 18.5) return classificacao[0];
+    if (imc < 18.5) return classificacao[0];
 
 }
 
