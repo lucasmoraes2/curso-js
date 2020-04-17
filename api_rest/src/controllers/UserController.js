@@ -1,18 +1,6 @@
 import User from '../models/User';
 
 class UserController {
-  async store(req, res) {
-    try {
-      const novoUser = await User.create(req.body);
-      const { id, nome, email } = novoUser;
-      return res.json({ id, nome, email });
-    } catch (e) {
-      return res.status(400).json({
-        errors: e.errors.map((err) => err.message),
-      });
-    }
-  }
-
   // Index
   async index(req, res) {
     try {
@@ -31,6 +19,19 @@ class UserController {
       return res.json({ id, nome, email });
     } catch (e) {
       return res.json(null);
+    }
+  }
+
+  // Store
+  async store(req, res) {
+    try {
+      const novoUser = await User.create(req.body);
+      const { id, nome, email } = novoUser;
+      return res.json({ id, nome, email });
+    } catch (e) {
+      return res.status(400).json({
+        errors: e.errors.map((err) => err.message),
+      });
     }
   }
 
@@ -67,7 +68,9 @@ class UserController {
       }
 
       await user.destroy();
-      return res.json(null);
+      return res.json({
+        apagado: true,
+      });
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
